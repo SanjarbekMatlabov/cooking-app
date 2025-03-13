@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "451955361631",
+    "project_id": "ozbekona-retsept",
+    "storage_bucket": "ozbekona-retsept.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451955361631:android:34eb3b5c2f067d7bd598ea",
+        "android_client_info": {
+          "package_name": "com.example.ozbekona_retsept"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA256MTHu39Ukd-WRh5Ak399aWlO0lk9KQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
