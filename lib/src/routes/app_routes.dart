@@ -43,19 +43,19 @@ class AppRoutes {
         builder: (context, state) => MainScreen(initialIndex: 3),
       ),
     ],
-    // redirect: (context, state) async {
-    //   final authService = AuthService();
-    //   final user = await authService.userStream.first;
-    //   final isLoggedIn = user != null;
+    redirect: (context, state) async {
+      final authService = AuthService();
+      final user = await authService.userStream.first;
+      final isLoggedIn = user != null;
 
-    //   if (!isLoggedIn &&
-    //       state.matchedLocation != '/sign-in' &&
-    //       state.matchedLocation != '/sign-up' &&
-    //       state.matchedLocation != '/forgot-password' &&
-    //       state.matchedLocation != '/onboarding') {
-    //     return '/sign-in';
-    //   }
-    //   return null;
-    // },
+      if (!isLoggedIn &&
+          state.matchedLocation != '/sign-in' &&
+          state.matchedLocation != '/sign-up' &&
+          state.matchedLocation != '/forgot-password' &&
+          state.matchedLocation != '/onboarding') {
+        return '/sign-in';
+      }
+      return null;
+    },
   );
 }

@@ -60,7 +60,7 @@ class OnboardingScreen extends StatelessWidget {
                 text: 'Get Started',
                 color: AppColors.primaryGreen,
                 onPressed: () {
-                  context.go('/home'); // SignInScreen'ga o'tish
+                  context.go('/sign-in'); // SignInScreen'ga o'tish
                 },
               ),
             ],
