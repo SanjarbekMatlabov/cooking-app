@@ -1,34 +1,54 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'src/routes/app_routes.dart';
-import 'src/constants/app_colors.dart';
+import 'router.dart';
+import 'constants.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,
-);
-FirebaseFirestore.instance.settings = const Settings(
-  persistenceEnabled: false, // Offline rejimni o‘chirish
-);
-  runApp(OzbekonaTamApp());
+  WidgetsFlutterBinding.ensureInitialized(); // Flutter bindingni ishga tushirish
+  await Firebase.initializeApp(); // Firebase’ni ishga tushirish
+  runApp(const UzbekonaTamApp());
 }
 
-class OzbekonaTamApp extends StatelessWidget {
+class UzbekonaTamApp extends StatelessWidget {
+  const UzbekonaTamApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'O‘zbekona Ta’m',
+      title: "O‘zbekona Ta’m",
       theme: ThemeData(
-        primaryColor: AppColors.primaryGreen,
-        scaffoldBackgroundColor: AppColors.backgroundLight,
+        primaryColor: kPrimaryColor,
+        scaffoldBackgroundColor: kBackgroundColor,
+        appBarTheme: const AppBarTheme(
+          color: kPrimaryColor,
+          elevation: 0,
+          titleTextStyle: kTitleStyle,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryGreen),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: kPrimaryColor,
+            foregroundColor: Colors.white,
+            shape: RoundedRectangleBorder(borderRadius: kDefaultBorderRadius),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            side: const BorderSide(color: kPrimaryColor),
+            shape: RoundedRectangleBorder(borderRadius: kDefaultBorderRadius),
+          ),
+        ),
+        textTheme: const TextTheme(
+          headlineSmall: kTitleStyle,
+          titleMedium: kSubtitleStyle,
+          bodyMedium: kBodyStyle,
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: kPrimaryColor,
+          secondary: kSecondaryColor,
         ),
       ),
-      routerConfig: AppRoutes.router,
-      debugShowCheckedModeBanner: false,
+      routerConfig: router, // go_router’dan navigatsiya konfiguratsiyasi
+      debugShowCheckedModeBanner: false, // Debug bannerini o‘chirish
     );
   }
 }
